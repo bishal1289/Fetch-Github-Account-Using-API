@@ -1,0 +1,46 @@
+
+#search {
+  width: 300px;
+  height: 20px;
+  font-family: cursive;
+  border: 1px solid rgb(34, 34, 231);
+  border-radius: 5px;
+}
+h1,
+h5,
+h2 {
+  font-family: cursive;
+  font-weight: bold;
+}
+
+.avtar {
+  height: 200px;
+  width: 200px;
+  border-radius: 8px;
+}
+
+#card {
+  height: 100vh;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-family: cursive;
+}
+.repoDiv {
+  background-color: rgb(220, 120, 13);
+  border-radius: 5px;
+}
+#repository {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 50%;
+}
+#flx {
+  display: flex;
+  gap: 2px;
+}
