@@ -5,53 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Github Profile</title>
-    <style>
-      #search {
-        width: 300px;
-        height: 20px;
-        font-family: cursive;
-        border: 1px solid rgb(34, 34, 231);
-        border-radius: 5px;
-      }
-      h1,
-      h5,
-      h2 {
-        font-family: cursive;
-        font-weight: bold;
-      }
-
-      .avtar {
-        height: 200px;
-        width: 200px;
-        border-radius: 8px;
-      }
-
-      #card {
-        height: 100vh;
-        width: 100%;
-      }
-
-      a {
-        text-decoration: none;
-        color: white;
-        font-family: cursive;
-      }
-      .repoDiv {
-        background-color: rgb(220, 120, 13);
-        border-radius: 5px;
-      }
-      #repository {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        align-items: center;
-        width: 50%;
-      }
-      #flx {
-        display: flex;
-        gap: 2px;
-      }
-    </style>
+  
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <main>
@@ -64,89 +19,6 @@
       <div id="profile"></div>
     </main>
 
-    <script>
-      let profile = document.querySelector("#profile");
-      let form = document.querySelector("#form");
-      let search = document.querySelector("#search");
-
-      const url = "https://api.github.com/users/";
-
-      async function getUser(userName) {
-        const resp = await fetch(url + userName);
-        const respData = await resp.json();
-        console.log(respData);
-
-        displayUser(respData);
-
-        getRepo(userName);
-      }
-
-      async function getRepo(userName) {
-        const resp = await fetch(url + userName + "/repos");
-        const respData = await resp.json();
-        console.log(respData);
-
-        displayRepo(respData);
-      }
-
-      function displayUser(user) {
-        const cardHtml = `
-        <div class="card">
-            <div>
-            <h2>${user.name} (@${search.value})</h2>
-            <p>${user.bio}</p>
-
-            
-        </div>
-        <div id='flx'>
-          <div>
-            <img class="avtar" src="${user.avatar_url}" alt="${user.name}"/>
-        </div>
-        <div>
-             <ul class="info">
-                <h5>Followers : ${user.followers}</h5>
-                <h5>Following : ${user.following}</h5>
-                <h5>Repos : ${user.public_repos}</h5>
-            </ul>
-        </div>
-       
-        </div>
-
-        <h1>Repo List:</h1>
-        <div id="repository">
-            
-        </div>
-        
-    </div>
-    `;
-        profile.innerHTML = cardHtml;
-      }
-
-      function displayRepo(repos) {
-        const repository = document.querySelector("#repository");
-
-        repos.forEach(function (ele) {
-          const repoEle = document.createElement("a");
-          const div = document.createElement("div");
-          div.classList.add("repoDiv");
-          repoEle.href = ele.html_url;
-          repoEle.target = "_blank";
-          repoEle.innerText = ele.name;
-          div.append(repoEle);
-          repository.append(div);
-        });
-      }
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const user = search.value;
-        
-
-        if (user) {
-          getUser(user);
-        }
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
